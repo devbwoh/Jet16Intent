@@ -47,6 +47,7 @@ fun MainScreen() {
             ButtonMap()
             ButtonCall()
             ButtonSms()
+            ButtonExplicitIntent()
         }
     }
 }
@@ -144,5 +145,19 @@ fun ButtonSms() {
         }
     ) {
         Text("문자 보내기", fontSize = 20.sp)
+    }
+}
+
+@Composable
+fun ButtonExplicitIntent() {
+    val context = LocalContext.current
+
+    Button(
+        onClick = {
+            val intent = Intent(context, AnotherActivity::class.java)
+            startActivity(context, intent, null)
+        }
+    ) {
+        Text("Activity 실행", fontSize = 20.sp)
     }
 }
